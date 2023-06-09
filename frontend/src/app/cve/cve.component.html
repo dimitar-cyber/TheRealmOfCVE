@@ -1,0 +1,36 @@
+<body>
+<h1>The Realm of CVE</h1>
+<div class="container">
+  <form class="form" [formGroup]="updateForm" (ngSubmit)="updateCve()">
+    <h2>Update Cve</h2>
+    <div class="form-group">
+      <label for="update-title">Title:</label>
+      <input
+        type="text"
+        id="update-title"
+        placeholder="New title"
+        formControlName="cve"
+      />
+    </div>
+    <div class="form-group">
+      <label for="update-neshto">New URL - CDN </label>
+      <input
+        type="text"
+        id="update-neshto"
+        placeholder="New URL - CDN"
+        formControlName="url"
+      />
+    </div>
+    <div class="form-group">
+      <label for="update-date_of_addition">Date of addition:</label>
+      <input
+        type="date"
+        id="update-date_of_addition"
+        formControlName="date_of_add"
+      />
+    </div>
+    <button class="submit-button" type="submit">Modify</button>
+    <button class="submit-button" (click)="goToCves()">Take Me Back</button>
+  </form>
+</div>
+</body>

@@ -1,0 +1,47 @@
+<body>
+<h1>The Realm of CVE</h1>
+<div class="container1" *ngIf="currentState === states.VIEW">
+  <table>
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Download</th>
+      <th>Modify</th>
+      <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody class="cve-list" *ngFor="let cve of cves">
+    <tr>
+      <td>{{ cve.cve }}</td>
+      <td><button class="button download-button" (click)="downloadCve(cve.url)">Download</button></td>
+      <td><button routerLink="/cve/{{ cve.id }}">Modify</button></td>
+      <td><button (click)="deleteCve(cve.id)">Delete</button></td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+      <td colspan="4"><button (click)="setCreate()">Add New Exploit</button></td>
+    </tr>
+    </tfoot>
+  </table>
+</div>
+
+<div class="container">
+  <form class="form" *ngIf="currentState === states.CREATE" [formGroup]="createForm" (ngSubmit)="createCve()">
+    <h2>Add new exploit</h2>
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input type="text" id="title" placeholder="What's the title?" formControlName="cve">
+    </div>
+    <div class="form-group">
+      <label for="url">URL - CDN</label>
+      <input type="text" id="url" placeholder="What's the url - cdn?" formControlName="url">
+    </div>
+    <div class="form-group">
+      <label for="date_of_addition">Date of addition:</label>
+      <input type="date" id="date_of_addition" formControlName="date_of_add">
+    </div>
+    <button class="submit-button" type="submit">Submit</button>
+  </form>
+</div>
+</body>
